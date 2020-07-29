@@ -23,15 +23,20 @@ class FindActivity : AppCompatActivity() {
         val logic = MainLogic()
         val dbHelper = WordReaderDbHelper(this)
 
+        val start = System.currentTimeMillis()
         val possibleWords = logic.combs(letters, length).distinct()
+        println("WORD GENERATOR EXECUTION: " + (System.currentTimeMillis() - start) + " milliseconds")
+
         val actualWordsWords: ArrayList<String> = ArrayList()
         val wordsObjects: ArrayList<PossibleWord> = ArrayList()
 
         possibleWords.forEach() {
+            val start2 = System.currentTimeMillis()
             if (dbHelper.ifWordExist(it) == 1) {
                 actualWordsWords.add(it)
                 wordsObjects.add(PossibleWord(it))
             }
+            println("WORD CHECK EXECUTION: " + (System.currentTimeMillis() - start2) + " milliseconds")
         }
 
         finalWords.adapter = PossibleWordAdapter(wordsObjects)

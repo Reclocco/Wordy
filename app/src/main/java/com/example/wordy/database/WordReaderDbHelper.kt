@@ -17,7 +17,8 @@ import java.nio.charset.Charset
 import java.util.*
 
 private const val SQL_CREATE_ENTRIES =
-    "CREATE TABLE $TABLE_NAME ($COLUMN_NAME TEXT)"
+    "CREATE TABLE $TABLE_NAME ($COLUMN_NAME TEXT NOT NULL UNIQUE," +
+            "ID INTEGER PRIMARY KEY DESC)"
 
 private const val SQL_DELETE_ENTRIES =
     "DROP TABLE IF EXISTS $TABLE_NAME"
@@ -56,7 +57,7 @@ class WordReaderDbHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_
     }
     fun ifWordExist(potentialWord: String): Int {
         val db = this.readableDatabase
-        val cursor = db.rawQuery("SELECT $COLUMN_NAME FROM $TABLE_NAME WHERE $COLUMN_NAME LIKE '$potentialWord'", null)
+        val cursor = db.rawQuery("SELECT $COLUMN_NAME FROM $TABLE_NAME WHERE $COLUMN_NAME = '$potentialWord'", null)
         cursor.moveToFirst()
         var myWord = ""
 
@@ -70,12 +71,13 @@ class WordReaderDbHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_
                 return 0
             }
         } catch (e: Exception){
+            cursor.close()
             return 0
         }
     }
     companion object {
         // If you change the database schema, you must increment the database version.
-        const val DATABASE_VERSION = 7
+        const val DATABASE_VERSION = 12
         const val DATABASE_NAME = "WordReader.db"
         const val TABLE_NAME = WordReaderContract.WordEntry.TABLE_NAME
         const val COLUMN_NAME = WordReaderContract.WordEntry.COLUMN_NAME_TITLE

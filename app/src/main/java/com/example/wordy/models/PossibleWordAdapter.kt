@@ -15,7 +15,7 @@ class PossibleWordAdapter (private val possibleWordList: List <PossibleWord>) : 
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PossibleWordViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.constraint, parent, false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.word, parent, false)
 
         return PossibleWordViewHolder(itemView)
     }
