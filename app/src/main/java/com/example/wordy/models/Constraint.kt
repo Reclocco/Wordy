@@ -1,9 +1,21 @@
 package com.example.wordy.models
 
-class Constraint (var letter: String, var position: Int){
-    val myConstraint = "Litera: $letter, pozycja: $position"
+import java.io.Serializable
+
+class Constraint (private var letterIn: String, private var positionIn: Int) : Serializable{
+    private val myConstraint = "Litera: $letterIn, pozycja: $positionIn"
+    private val letter = letterIn
+    private val position = positionIn
 
     fun getConstraint(): String {
         return myConstraint
+    }
+
+    fun getConstraintLetter(): String {
+        return letter
+    }
+
+    fun getConstraintPosition() : Int {
+        return position
     }
 }

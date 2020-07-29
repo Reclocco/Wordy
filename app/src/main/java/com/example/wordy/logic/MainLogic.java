@@ -10,17 +10,15 @@ public class MainLogic {
             return letters;
 
         ArrayList<String> results = new ArrayList<>();
-        for(String letter: letters){
-            ArrayList<String> copied = new ArrayList<>();
+        for (String letter : letters) {
+            ArrayList<String> copied = new ArrayList<>(letters);
             copied.remove(letter);
 
-            for(String word: combs(copied, length-1)){
+            for (String word : combs(copied, length - 1)) {
                 results.add(letter + word);
             }
         }
 
         return results;
     }
-
-
 }

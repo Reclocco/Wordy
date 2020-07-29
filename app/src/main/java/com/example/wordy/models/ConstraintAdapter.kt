@@ -25,6 +25,6 @@ class ConstraintAdapter(private val constraintList: List <Constraint>) : Recycle
     override fun onBindViewHolder(holder: ConstraintViewHolder, position: Int) {
         val currentItem = constraintList[position]
 
-        holder.textView.text = currentItem.myConstraint
+        holder.textView.text = currentItem.getConstraint()
     }
 }

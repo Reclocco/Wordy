@@ -1,18 +1,20 @@
 package com.example.wordy
 
-import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.wordy.database.WordReaderDbHelper
 import com.example.wordy.models.Constraint
 import com.example.wordy.models.ConstraintAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.popup.view.*
-import java.util.ArrayList
+import java.io.Serializable
+import kotlin.collections.ArrayList
+import com.example.wordy.FindActivity as FindActivity1
 
 class MainActivity : AppCompatActivity() {
 
@@ -53,20 +55,26 @@ class MainActivity : AppCompatActivity() {
         }
 
         findButton.setOnClickListener{
-            Toast.makeText(this, "Button Clicked", Toast.LENGTH_SHORT).show()
-
-            //test database
-            var myText = ""
-
             val dbHelper = WordReaderDbHelper(this)
-            val cursor = dbHelper.getText()
-            cursor!!.moveToFirst()
 
-            while (cursor.moveToNext()) {
-                myText = myText.plus(cursor.getString(cursor.getColumnIndex(WordReaderDbHelper.COLUMN_NAME)))
+            val myLetters: ArrayList<String> = ArrayList()
+            editText.text.toString().toCharArray().forEach {
+                myLetters.add(it.toString())
             }
 
-            Toast.makeText(this, myText, Toast.LENGTH_LONG).show()
+            val myLength = editText2.text.toString().toInt()
+
+            println("MA len: $myLength")
+            myLetters.forEach(){
+                println(it)
+            }
+
+            val intent = Intent(this@MainActivity, FindActivity1::class.java)
+            intent.putExtra("EXTRA_CONSTRAINTS", constraints as Serializable)
+            intent.putExtra("LENGTH", myLength)
+            intent.putExtra("LETTERS", myLetters)
+
+            startActivity(intent)
         }
     }
 }
