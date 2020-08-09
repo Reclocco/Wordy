@@ -3,15 +3,27 @@ package com.example.wordy.models
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView.OnItemClickListener
+import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wordy.R
 import kotlinx.android.synthetic.main.constraint.view.*
 
-class ConstraintAdapter(private val constraintList: List <Constraint>) : RecyclerView.Adapter<ConstraintAdapter.ConstraintViewHolder>() {
+
+class ConstraintAdapter(constraintListIn: ArrayList <Constraint>) : RecyclerView.Adapter<ConstraintAdapter.ConstraintViewHolder>() {
+    var constraintList = constraintListIn
 
     class ConstraintViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val textView: TextView = itemView.conItem
+        val deleteButton: ImageButton = itemView.deleteButton
+
+        init {
+            itemView.deleteButton.setOnClickListener {
+                val position: Int = adapterPosition
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ConstraintViewHolder {
@@ -26,5 +38,9 @@ class ConstraintAdapter(private val constraintList: List <Constraint>) : Recycle
         val currentItem = constraintList[position]
 
         holder.textView.text = currentItem.getConstraint()
+        holder.deleteButton.setOnClickListener {
+            constraintList.removeAt(position)
+            notifyItemRemoved(position)
+        }
     }
 }

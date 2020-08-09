@@ -29,6 +29,8 @@ class MainActivity : AppCompatActivity() {
         constraintsList.layoutManager = LinearLayoutManager(this)
         constraintsList.setHasFixedSize(false)
 
+        
+
         //add button window on click
         addButton.setOnClickListener{
             val mAddView = LayoutInflater.from(this).inflate(R.layout.popup, null)

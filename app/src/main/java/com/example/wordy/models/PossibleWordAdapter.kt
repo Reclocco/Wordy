@@ -6,12 +6,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wordy.R
-import kotlinx.android.synthetic.main.constraint.view.*
+import kotlinx.android.synthetic.main.word.view.*
 
 class PossibleWordAdapter (private val possibleWordList: List <PossibleWord>) : RecyclerView.Adapter<PossibleWordAdapter.PossibleWordViewHolder>() {
 
     class PossibleWordViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val textView: TextView = itemView.conItem
+        val textView: TextView = itemView.wordItem
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PossibleWordViewHolder {

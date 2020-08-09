@@ -1,12 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content">
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:id="@+id/linearLayout3">
 
     <TextView
             android:text="placeholder"
-            android:layout_width="match_parent"
+            android:layout_width="292dp"
             android:layout_height="wrap_content"
-            android:id="@+id/conItem"/>
+            android:id="@+id/conItem"
+            tools:layout_conversion_absoluteHeight="19dp"
+            tools:layout_editor_absoluteY="0dp"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_conversion_absoluteWidth="411dp"/>
+
+    <ImageButton
+            android:layout_width="28dp"
+            android:layout_height="match_parent"
+            app:srcCompat="@android:drawable/btn_dialog"
+            android:id="@+id/deleteButton"
+            android:layout_weight="1"/>
+
 </LinearLayout>
