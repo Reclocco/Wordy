@@ -18,12 +18,6 @@ class ConstraintAdapter(constraintListIn: ArrayList <Constraint>) : RecyclerView
     class ConstraintViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val textView: TextView = itemView.conItem
         val deleteButton: ImageButton = itemView.deleteButton
-
-        init {
-            itemView.deleteButton.setOnClickListener {
-                val position: Int = adapterPosition
-            }
-        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ConstraintViewHolder {
