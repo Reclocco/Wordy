@@ -3,10 +3,8 @@ package com.example.wordy.models
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView.OnItemClickListener
 import android.widget.ImageButton
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wordy.R
 import kotlinx.android.synthetic.main.constraint.view.*
